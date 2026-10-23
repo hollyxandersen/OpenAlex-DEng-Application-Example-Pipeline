@@ -1,0 +1,6 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+openalex_works.jsonl
+checkpoint.json
