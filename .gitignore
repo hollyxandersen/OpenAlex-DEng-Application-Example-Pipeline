@@ -7,3 +7,4 @@ checkpoint.json
 # DuckDB database files
 *.duckdb
 *.duckdb.wal
+output/
