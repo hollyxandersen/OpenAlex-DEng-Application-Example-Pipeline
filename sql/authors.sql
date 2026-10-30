@@ -12,7 +12,7 @@ INNER JOIN work_authors AS wa
     ON a.author_id = wa.author_id
 INNER JOIN works AS w
     ON wa.work_id = w.work_id
-GROUP BY a.author_id, a.author_name
+GROUP BY a.author_id, a.author_name, a.orcid
 ORDER BY publication_count DESC, total_citations DESC
 ),
 author_affiliations AS (
