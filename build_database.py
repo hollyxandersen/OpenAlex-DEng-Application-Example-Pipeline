@@ -29,6 +29,7 @@ con.execute("""
         SELECT
             id AS work_id
             ,UNNEST(authorships) AS authorship
+            ,generate_subscripts(authorships, 1) AS author_order
         FROM read_ndjson_auto('openalex_works.jsonl')
     )
     SELECT
@@ -36,6 +37,7 @@ con.execute("""
         ,authorship.author.id AS author_id
         ,authorship.author_position AS author_position
         ,authorship.is_corresponding AS is_corresponding
+        ,author_order
     FROM expanded_authors
 """)
 
@@ -167,7 +169,6 @@ row_numbers = con.execute("""
     SELECT 'work_topics', COUNT(*) FROM work_topics
 """).df()
 
-#Checking for duplicates in each table using the unique id for each table
 # Checking for duplicate IDs and broken relationships
 checks = con.execute("""
     SELECT
@@ -195,9 +196,16 @@ checks = con.execute("""
            AND a.author_id IS NULL) AS broken_author_references
 """).df()
 
-print(checks.T)
+relevance_score_check = con.execute("""
+    SELECT
+        COUNT(*) AS total_papers
+        ,MIN(relevance_score) AS min_relevance
+        ,ROUND(AVG(relevance_score), 2) AS avg_relevance
+        ,MEDIAN(relevance_score) AS median_relevance
+        ,MAX(relevance_score) AS max_relevance
+    FROM works
+""").df()
 
-
-print(checks)
+print(relevance_score_check)
 
 con.close()
