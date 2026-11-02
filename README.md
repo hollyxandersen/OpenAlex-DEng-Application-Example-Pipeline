@@ -12,8 +12,6 @@ This project is designed for researchers and students exploring the research lan
 
 The dashboard presents publication and citation trends, leading researchers and institutions, journals, research topics and geographical distribution. It also includes a searchable catalogue of publications, allowing users to investigate individual works or explore the research associated with a particular researcher, institution or journal.
 
-For this example, I chose photoactive batteries as my OpenAlex search term, drawing on my previous research experience, and extracted metadata for 8,579 publications.
-
 I chose *photoactive batteries* as my OpenAlex search term, drawing on my previous research experience, and extracted data covering **8,579 publications**.
 
 The resulting dashboard:
