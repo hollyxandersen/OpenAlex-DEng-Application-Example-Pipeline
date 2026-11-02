@@ -1,5 +1,15 @@
 
-"""Generate a standalone OpenAlex research dashboard."""
+"""
+Generate an interactive research landscape dashboard from DuckDB.
+
+Executes the analytical SQL queries stored in sql/, prepares the results
+for presentation and generates a standalone HTML report.
+
+The dashboard includes publication trends, researcher and institution
+rankings, a geographic map and a searchable publication catalogue.
+Analytical transformations remain separate from presentation logic.
+"""
+
 
 from datetime import date
 from pathlib import Path

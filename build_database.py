@@ -1,3 +1,15 @@
+
+"""
+Transform raw OpenAlex JSONL data into a relational DuckDB database.
+
+Normalises nested publication metadata into eight related tables covering
+works, authors, institutions, affiliations, citation histories and topics.
+
+Preserves many-to-many relationships to support accurate downstream
+analysis, then performs basic integrity checks on the resulting tables.
+"""
+
+
 import duckdb
 
 con = duckdb.connect("openalex.duckdb")
